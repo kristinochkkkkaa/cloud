@@ -1,0 +1,82 @@
+@mixin centerer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin has-child {
+    &:before, &:after {
+        content: "";
+        display: block;
+        position: absolute;
+    }
+}
+
+html, body {
+    height: 100%;
+    background: #fff;
+    position: relative;
+}
+
+.icon-large {
+    width: 220px;
+    height: 220px;
+    border-radius: 38px;
+    @include centerer;
+}
+
+.icon-weather {
+    overflow: hidden;
+    background: linear-gradient(to bottom, #1d61f0 , #19d6fd );
+  
+}
+.sun{
+  width:84px;
+  height:84px;
+  border-radius:50%;
+  background:linear-gradient(to bottom, #ffc600  , #ffe828  );
+  
+  position:absolute;
+  top:50px;
+  left:30px;
+
+}
+@keyframes float{
+  0%{
+    transform:translate(-10px,0); opacity:.95;
+  }
+  100%{
+  transform:translate(30px,0);   opacity:.65;
+  }
+}
+.cloud{
+  position:absolute;
+ top:85px;
+  left:40px;
+  
+  opacity:.95;
+  margin:30px;
+  animation:float 3s linear infinite alternate;
+   @include has-child;
+
+  &:before{
+    width:84px;
+    height:48px;
+    background:#fff;
+  }
+  &:after{
+      width:48px;
+    height:48px;
+    border-radius:50%;
+      background:#fff;
+    position:absolute;
+    top:0;
+    left:-24px;
+    
+    box-shadow:80px -9px 0 9px #fff,38px -25px 0 20px #fff;
+    
+    
+    
+  }
+}
